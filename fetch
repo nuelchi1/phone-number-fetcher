@@ -1,0 +1,13 @@
+<?php
+
+$text=file_get_contents('URL_CONTAINING_PHONE_NUMBERS_TO_BE_FETCHED');
+$res = preg_match_all('~(?:\+?234|0)(?:\s*\d{3}){2}\s*\d{4}~',$text,$matches);
+if ($res) {
+foreach(array_unique($matches[0]) as $phone) {
+echo $phone . ";";
+}
+}
+else {
+echo "No phones found.";
+}
+?>
